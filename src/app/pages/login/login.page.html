@@ -6,11 +6,13 @@
   </ion-card-header>
 
   <ion-card-content>
-    <ion-input label="Usuario" labelPlacement="floating"></ion-input>
+    <ion-input label="Usuario" labelPlacement="floating" [(ngModel)]="login.usuario"></ion-input>
 
-    <ion-input label="Contraseña" labelPlacement="floating" type="password"></ion-input>
+    <ion-input label="Contraseña" labelPlacement="floating" type="password" [(ngModel)]="login.password"></ion-input>
     <br>
-    <a href=""><h5>¿Has olvidado tu Contraseña?</h5></a>
+    <ion-item style="color: #1b475d;" [routerLink]="['/recuperarcontrasena']">
+      <ion-label>¿Has olvidado tu Contraseña?</ion-label>
+    </ion-item>
     <br>
 
     <ion-button expand="block" (click)="ingresar()"><ion-ripple-effect></ion-ripple-effect>Ingresar</ion-button>

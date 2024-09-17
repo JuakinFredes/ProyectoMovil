@@ -11,6 +11,8 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { ChomeComponent } from 'src/app/components/chome/chome.component';
+import { CalendarComponent } from 'src/app/components/calendar/calendar.component';
+import { PetsComponent } from 'src/app/components/pets/pets.component';
 
 @NgModule({
   imports: [
@@ -21,6 +23,6 @@ import { ChomeComponent } from 'src/app/components/chome/chome.component';
     
   ],
   
-  declarations: [HomePage,ChomeComponent]
+  declarations: [HomePage,ChomeComponent, CalendarComponent,PetsComponent]
 })
 export class HomePageModule {}

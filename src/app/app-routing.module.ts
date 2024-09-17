@@ -19,6 +19,18 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'recuperarcontrasena',
+    loadChildren: () => import('./pages/recuperarcontrasena/recuperarcontrasena.module').then( m => m.RecuperarcontrasenaPageModule)
+  },
+  {
+    path: 'pages',
+    loadChildren: () => import('./pages/pages.module').then( m => m.PagesPageModule)
+  },
+  {
+    path: 'restablecer',
+    loadChildren: () => import('./pages/restablecer/restablecer.module').then( m => m.RestablecerPageModule)
+  },
 
 ];
 
