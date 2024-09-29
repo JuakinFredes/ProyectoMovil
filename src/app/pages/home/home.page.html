@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="calendar">   
+          <ion-icon name="calendar"></ion-icon>
+          Alarmas
+        </ion-segment-button>
+        <ion-segment-button value="chome">
+          <ion-icon name="home-outline"></ion-icon>
+          Home
+        </ion-segment-button>
+        <ion-segment-button value="pets">
+          <ion-icon name="paw-outline"></ion-icon>
+          Mascotas
+        </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-router-outlet></ion-router-outlet>
+</ion-content>

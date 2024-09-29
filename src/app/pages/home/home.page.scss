@@ -1,0 +1,28 @@
+
+ion-tab-bar, ion-tab-button{
+  background-color: #1b475d;
+}
+ion-tabs{
+  position: fixed;
+  top: 0;
+}
+.content, .carrusel{
+  background-color: #fff5d0; 
+}
+
+.carrusel{
+  margin-top: 20%;
+}
+#bodyHome{
+  justify-content: center;
+  display: flex;
+  background-color: rgba(0,0,0,.0);
+  color: #fff;
+  border: none;
+}
+.content{
+  float: left;
+  
+  width: 35%;
+  height: 35%;
+}

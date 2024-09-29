@@ -1,0 +1,32 @@
+ion-card{
+    margin: auto;
+    margin-top: 15%;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-right: 25px;
+    border-radius: 10px;
+    background-color: #fff5d0;
+    height: 75%;
+}
+
+ion-card-content{
+
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+ion-card-title  {
+    margin:auto;
+    color:#2c2720;
+}
+
+ion-card-title{
+    font-size: 35px;
+}
+
+.contenido{
+    height: 100vh;
+    ion-card {
+        height: 85%; 
+    }
+}
