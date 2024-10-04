@@ -1,13 +1,23 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>perfil_masco</ion-title>
+    <ion-button [routerLink]="['/home/pets']" ><ion-icon name="caret-back-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">perfil_masco</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+<ion-card class="carrusel">
+  <ion-card-header>
+    <ion-card-title>Nombre Mascota</ion-card-title>
+    <ion-card-subtitle>Raza mascota - Edad</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <img class="perro" src="https://assets.petco.com/petco/image/upload/f_auto,q_auto:best/dog-lp_2up_new-dog-guide_puppy_260x346.png" style="width:70%;">
+  </ion-card-content>
+
+  <ion-card class="content" style="background-color: #fff5d0; border: none; box-shadow: none;">
+    <ion-card-content>
+      
+    </ion-card-content>
+  </ion-card>
+
+</ion-card>
