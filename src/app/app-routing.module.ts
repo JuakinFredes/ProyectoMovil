@@ -31,6 +31,14 @@ const routes: Routes = [
     path: 'restablecer',
     loadChildren: () => import('./pages/restablecer/restablecer.module').then( m => m.RestablecerPageModule)
   },
+  {
+    path: 'perfil-masco',
+    loadChildren: () => import('./pages/perfil-masco/perfil-masco.module').then( m => m.PerfilMascoPageModule)
+  },
+  {
+    path: 'crear-masco',
+    loadChildren: () => import('./pages/crear-masco/crear-masco.module').then( m => m.CrearMascoPageModule)
+  },
 
 ];
 

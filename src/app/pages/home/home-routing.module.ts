@@ -4,7 +4,7 @@ import { HomePage } from './home.page';
 import { ChomeComponent } from 'src/app/components/chome/chome.component';
 import { CalendarComponent } from 'src/app/components/calendar/calendar.component';
 import { PetsComponent } from 'src/app/components/pets/pets.component';
-import { PetPerfilComponent } from 'src/app/components/pet-perfil/pet-perfil.component';
+
 
 const routes: Routes = [
   {
@@ -23,10 +23,7 @@ const routes: Routes = [
         path: 'pets',
         component: PetsComponent
       },  
-      {
-        path: 'petperil',
-        component: PetPerfilComponent
-      }
+     
     ]
   }
 ];

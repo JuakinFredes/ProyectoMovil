@@ -13,7 +13,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { ChomeComponent } from 'src/app/components/chome/chome.component';
 import { CalendarComponent } from 'src/app/components/calendar/calendar.component';
 import { PetsComponent } from 'src/app/components/pets/pets.component';
-import { PetPerfilComponent } from 'src/app/components/pet-perfil/pet-perfil.component';
+
 
 @NgModule({
   imports: [
@@ -24,6 +24,6 @@ import { PetPerfilComponent } from 'src/app/components/pet-perfil/pet-perfil.com
     
   ],
   
-  declarations: [HomePage,ChomeComponent, CalendarComponent,PetsComponent,PetPerfilComponent]
+  declarations: [HomePage,ChomeComponent, CalendarComponent,PetsComponent]
 })
 export class HomePageModule {}
