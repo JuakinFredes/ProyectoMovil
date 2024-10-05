@@ -1,23 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button [routerLink]="['/home/pets']" ><ion-icon name="caret-back-outline"></ion-icon></ion-button>
+    <ion-button shape="round" [routerLink]="['/home/pets']" ><ion-icon name="caret-back-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-card class="carrusel">
   <ion-card-header>
-    <ion-card-title>Nombre Mascota</ion-card-title>
-    <ion-card-subtitle>Raza mascota - Edad</ion-card-subtitle>
+    <ion-card-title>Agrege su mascota</ion-card-title>
   </ion-card-header>
 
-  <ion-card-content>
-    <img class="perro" src="https://assets.petco.com/petco/image/upload/f_auto,q_auto:best/dog-lp_2up_new-dog-guide_puppy_260x346.png" style="width:70%;">
-  </ion-card-content>
+  <div class="fotos" style="display: flex; justify-content: center; border: 1px solid black;">
+  <ion-button size="large" shape="round">
+    <ion-icon slot="icon-only" name="add-circle-outline" size="large"></ion-icon>
+  </ion-button>
+  </div>  
 
-  <ion-card class="content" style="background-color: #fff5d0; border: none; box-shadow: none;">
-    <ion-card-content>
-      
+    <ion-card-content>  
+      <ion-item>
+        <ion-input label="Nombre" placeholder="Nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Apellido" placeholder="Apellido"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Especie" placeholder="Especie"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Raza" placeholder="Raza"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Fecha de Nacimiento" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Nombre Dueño" placeholder="Nombre Dueño"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Nombre Dueño 2" placeholder="Nombre Dueño"></ion-input>
+      </ion-item>
     </ion-card-content>
-  </ion-card>
+
 
 </ion-card>

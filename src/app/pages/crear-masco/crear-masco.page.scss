@@ -1,0 +1,15 @@
+.carrusel {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    background-color: #fff5d0;
+}
+
+.fotos{
+    border-radius: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}

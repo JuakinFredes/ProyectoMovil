@@ -1,23 +1,47 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button [routerLink]="['/home/pets']" ><ion-icon name="caret-back-outline"></ion-icon></ion-button>
+    <ion-button shape="round" [routerLink]="['/home/pets']" ><ion-icon name="caret-back-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-card class="carrusel">
-  <ion-card-header>
-    <ion-card-title>Nombre Mascota</ion-card-title>
-    <ion-card-subtitle>Raza mascota - Edad</ion-card-subtitle>
-  </ion-card-header>
+  
 
-  <ion-card-content>
-    <img class="perro" src="https://assets.petco.com/petco/image/upload/f_auto,q_auto:best/dog-lp_2up_new-dog-guide_puppy_260x346.png" style="width:70%;">
-  </ion-card-content>
-
-  <ion-card class="content" style="background-color: #fff5d0; border: none; box-shadow: none;">
+  <ion-card class="carrusel">
     <ion-card-content>
-      
+      <img class="perro" src="https://assets.petco.com/petco/image/upload/f_auto,q_auto:best/dog-lp_2up_new-dog-guide_puppy_260x346.png" style="width:70%;">
     </ion-card-content>
-  </ion-card>
+    <ion-card-header>
+      <ion-card-title>Nombre Mascota</ion-card-title>
+      <ion-card-subtitle>Raza mascota - Edad</ion-card-subtitle>
+    </ion-card-header>
+
+  <ion-grid [fixed]="true">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input label="Apellido:" value="Apellido" [readonly]="true"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-input label="Sexo:" value="Sexo" [readonly]="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input label="Especie:" value="Especie" [readonly]="true"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-input label="Dueño:" value="Dueño" [readonly]="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button>Crear evento</ion-button>
 
 </ion-card>
