@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarComponent  implements OnInit {
 
+  isWeekday = (dateString: string) => {
+    const date = new Date(dateString);
+    const utcDay = date.getUTCDay();
+    return utcDay !== 0 && utcDay !== 6;
+  };
+
   constructor() { }
 
   ngOnInit() {}
