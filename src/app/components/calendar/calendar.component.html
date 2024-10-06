@@ -1,10 +1,18 @@
 <div class="calendario">
+
     <ion-item style="margin-top: 5%;">
         <ion-input style="height: 70px;" label="Calendario"  [readonly]="true"></ion-input>
-        <ion-button size="medium"><ion-icon name="calendar"></ion-icon></ion-button>
+        <ion-button [routerLink]="['/agenda']" size="medium"><ion-icon name="calendar"></ion-icon></ion-button>
     </ion-item>
     <ion-item>
         <ion-input style="height: 70px;" label="Alarma"  [readonly]="true"></ion-input>
-        <ion-button size="medium"><ion-icon name="time"></ion-icon></ion-button>
+        <ion-button [routerLink]="['/alarmas']" size="medium"><ion-icon name="time"></ion-icon></ion-button>
     </ion-item>
+
+    <div class="alarmas">
+
+        
+
+    </div>
+
 </div>

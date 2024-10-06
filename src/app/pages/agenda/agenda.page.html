@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button shape="round" [routerLink]="['/home/calendar']" ><ion-icon name="caret-back-outline"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card>
+  <div class="calendario">
+    <ion-datetime></ion-datetime>
+  </div>
+  <div class="input">
+    <ion-item>
+      <ion-input label="Evento:" placeholder="Evento"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>Descripcion</ion-item>
+    <ion-item>
+      <ion-textarea rows="2" class="desc" placeholder="Texto"></ion-textarea>
+    </ion-item>
+  </div>
+  <div class="boton"><ion-button size="small">agregar evento</ion-button></div>
+</ion-card>

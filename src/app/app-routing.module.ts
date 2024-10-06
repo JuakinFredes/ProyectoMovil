@@ -39,6 +39,15 @@ const routes: Routes = [
     path: 'crear-masco',
     loadChildren: () => import('./pages/crear-masco/crear-masco.module').then( m => m.CrearMascoPageModule)
   },
+  {
+    path: 'alarmas',
+    loadChildren: () => import('./pages/alarmas/alarmas.module').then( m => m.AlarmasPageModule)
+  },
+  {
+    path: 'agenda',
+    loadChildren: () => import('./pages/agenda/agenda.module').then( m => m.AgendaPageModule)
+  },
+
 
 ];
 
