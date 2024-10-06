@@ -3,3 +3,19 @@
     <ion-button shape="round" [routerLink]="['/home/calendar']" ><ion-icon name="caret-back-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
+<ion-card class="content">
+  <div class="relog">
+      <ion-datetime presentation="time"></ion-datetime>
+  </div>
+  <div class="input">
+    <ion-item>
+      <ion-input label="Nombre alarma:" placeholder="Alarma"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>Descripcion</ion-item>
+    <ion-item>
+      <ion-textarea rows="2" class="desc" placeholder="Texto"></ion-textarea>
+    </ion-item>
+  </div>
+  <div class="boton"><ion-button size="small">agregar Alarma</ion-button></div>
+</ion-card>
