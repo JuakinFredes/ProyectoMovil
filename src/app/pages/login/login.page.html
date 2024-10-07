@@ -15,7 +15,8 @@
     </ion-item>
     <br>
 
-    <ion-button expand="block" (click)="ingresar()"><ion-ripple-effect></ion-ripple-effect>Ingresar</ion-button>
+    <ion-button expand="block" (click)="ingresar()" id="open-loading"><ion-ripple-effect></ion-ripple-effect>Ingresar</ion-button>
+    <ion-loading class="custom-loading" trigger="open-loading" message="Loading..." [duration]="1200"></ion-loading>
     <br>
     <ion-button expand="block" (click)="registro()"><ion-ripple-effect></ion-ripple-effect>Registrarse</ion-button>
   </ion-card-content>

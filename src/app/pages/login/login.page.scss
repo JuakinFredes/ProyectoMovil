@@ -20,3 +20,10 @@ ion-item{
     
     border-radius: 10px;
 }
+
+ion-loading.custom-loading {
+    --background: #e3edff;
+    --spinner-color: #a4e043;
+  
+    color: #a4e043;
+  }

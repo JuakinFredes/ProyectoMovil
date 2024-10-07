@@ -28,14 +28,14 @@ export class LoginPage implements OnInit {
 
   ingresar(){
     if(this.validateModel(this.login)){
-      this.presentToast("top","Bienvenid@");
+      this.presentToast("middle","Bienvenido/a " + this.login.usuario);
       //agrego creación de NavigationExtras para pasar parámetros a ota page
       let navigationExtras : NavigationExtras ={
         state: {login: this.login}
       };
       this.router.navigate(['/home'],navigationExtras);
     }else{
-      this.presentToast("middle","Error - Falta: "+this.field,5000);
+      this.presentToast("middle","Error - Falta: " + this.field,3000);
     }    
   }
 
