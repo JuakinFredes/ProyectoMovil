@@ -47,6 +47,11 @@ const routes: Routes = [
     path: 'agenda',
     loadChildren: () => import('./pages/agenda/agenda.module').then( m => m.AgendaPageModule)
   },
+  {
+    path: '**',
+    loadChildren: () => import('./not-found/not-found/not-found.module').then( m => m.NotFoundPageModule)
+  },
+
 
 
 ];
