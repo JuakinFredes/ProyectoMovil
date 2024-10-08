@@ -5,6 +5,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Mascota } from '../class/mascota';
 import { Usuario } from '../class/usuario';
 
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,8 +25,10 @@ export class DbserviceService {
 
     constructor(private sqlite: SQLite, 
       private platform: Platform, 
-      public toastController: ToastController) { 
+      public toastController: ToastController
+    ) { 
       this.crearBD(); 
+      
     } 
    
     crearBD() { 

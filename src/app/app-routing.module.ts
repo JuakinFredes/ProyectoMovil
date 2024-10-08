@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 
+
+
 const routes: Routes = [
   {
     path: 'home',
@@ -34,19 +36,23 @@ const routes: Routes = [
   },
   {
     path: 'perfil-masco',
-    loadChildren: () => import('./pages/perfil-masco/perfil-masco.module').then( m => m.PerfilMascoPageModule)
+    loadChildren: () => import('./pages/perfil-masco/perfil-masco.module').then( m => m.PerfilMascoPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'crear-masco',
-    loadChildren: () => import('./pages/crear-masco/crear-masco.module').then( m => m.CrearMascoPageModule)
+    loadChildren: () => import('./pages/crear-masco/crear-masco.module').then( m => m.CrearMascoPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'alarmas',
-    loadChildren: () => import('./pages/alarmas/alarmas.module').then( m => m.AlarmasPageModule)
+    loadChildren: () => import('./pages/alarmas/alarmas.module').then( m => m.AlarmasPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'agenda',
-    loadChildren: () => import('./pages/agenda/agenda.module').then( m => m.AgendaPageModule)
+    loadChildren: () => import('./pages/agenda/agenda.module').then( m => m.AgendaPageModule),
+    canActivate: [AuthGuard]
   },
   { path: '**', component: NotFoundComponent },
 ];
