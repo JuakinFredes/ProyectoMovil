@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DbserviceService } from 'src/app/services/dbservice.service';
 
 @Component({
   selector: 'app-register',
@@ -8,9 +9,21 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
 
-  constructor(public router:Router) { }
+  nombre : string = "";
+  contrasena : string = "";
+  correo : string = "";
 
-  ngOnInit() {
+  constructor(public router:Router,
+              private dbservice: DbserviceService
+            ) { }
+
+  usuario: any[] = [];
+
+  ngOnInit() {}
+
+  async registrar(){
+    await this.dbservice.addUsuario(this.nombre, this.contrasena, this.correo); 
+    console.log('Registrando usuario:', this.nombre, this.contrasena, this.correo);
   }
   
   ingresar(){
@@ -20,4 +33,7 @@ export class RegisterPage implements OnInit {
   regresar(){
     this.router.navigate(['/login']);
   }
+
+
+
 }

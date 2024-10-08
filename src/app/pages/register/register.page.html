@@ -4,18 +4,19 @@
     <ion-card-title>Registrarse</ion-card-title>
     <ion-card-subtitle>Bienvenido a XXX </ion-card-subtitle>
   </ion-card-header>
-
+  <form (ngSubmit)="registrar()">
   <ion-card-content>
-    <ion-input label="Nombre de Usuario" labelPlacement="floating"></ion-input>
+    <ion-input [(ngModel)]="nombre" label="Nombre de Usuario" labelPlacement="floating"></ion-input>
 
-    <ion-input label="Contraseña" labelPlacement="floating" type="password"></ion-input>
+    <ion-input [(ngModel)]="contrasena" label="Contraseña" labelPlacement="floating" type="password"></ion-input>
     <ion-input label="Confirme su Contraseña" labelPlacement="floating" type="password"></ion-input>
 
-    <ion-input label="Ingrese su correo" labelPlacement="floating" type="mail"></ion-input>
+    <ion-input [(ngModel)]="correo" label="Ingrese su correo" labelPlacement="floating" type="mail"></ion-input>
     <br>
     <a href= "" click= "regresar()" ><h5>¿Ya tienes cuenta? Inicia sesión</h5></a>
 
     <ion-button expand="block" (click)="ingresar()"><ion-ripple-effect></ion-ripple-effect>Ingresar</ion-button>
 
   </ion-card-content>
+  </form>
 </ion-card>
