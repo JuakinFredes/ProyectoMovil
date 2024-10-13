@@ -4,16 +4,16 @@ import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
+import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
-import { NotFoundComponent } from './not-found/not-found.component';
-
 @NgModule({
-  declarations: [AppComponent,NotFoundComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SQLite],
+  declarations: [AppComponent],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule,AngularFireAuthModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
