@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AutentificacionService } from 'src/app/services/autentificacion.service';
 import { DbserviceService } from 'src/app/services/dbservice.service';
 
 @Component({
@@ -13,13 +15,47 @@ export class RegisterPage implements OnInit {
   contrasena : string = "";
   correo : string = "";
 
+  formRegistro: FormGroup;
+  
   constructor(public router:Router,
-              private dbservice: DbserviceService
+              private dbservice: DbserviceService,
+              public formBuilder: FormBuilder,
+              public autentificacion : AutentificacionService
             ) { }
 
   usuario: any[] = [];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.formRegistro = this.formBuilder.group({
+      nombre : ['', [Validators.required]],
+      email : ['', [Validators.required,
+                    Validators.email
+      ]],
+      password : ['', [Validators.required,
+                       Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")
+      ]]
+    }) 
+
+  
+
+  }
+
+
+  get errorControl(){ 
+      return this.formRegistro?.controls;
+  }
+
+
+  async registarFireBase() {
+    if(this.formRegistro?.valid){
+      //const user = await this.autentificacion.registrarUsuario(email,password)
+    }
+  }
+
+
+
+
+
 
   async registrar(){
     await this.dbservice.addUsuario(this.nombre, this.contrasena, this.correo); 
