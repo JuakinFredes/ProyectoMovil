@@ -8,24 +8,24 @@
     <ion-card-content>
       
       <ion-input formControlName="nombre"  [(ngModel)]="nombre" label="Nombre de Usuario" labelPlacement="floating"></ion-input>
-        <div *ngif="this.formRegistro.controls?.['nombre'].touched && this.formRegistro.controls?.['nombre'].invalid">
-          <ion-text *ngif="errorControl.nombre.error?.required">
+        <div *ngIf="this.formRegistro.controls?.['nombre'].touched && this.formRegistro.controls?.['nombre'].invalid">
+          <ion-text *ngIf="errorControl.nombre.errors?.required">
             Nombre es requerido
           </ion-text>
         </div>
 
       <ion-input formControlName="password"  [(ngModel)]="contrasena" label="Contraseña" labelPlacement="floating" type="password"></ion-input>
       <ion-input label="Confirme su Contraseña" labelPlacement="floating" type="password"></ion-input>
-      <div *ngif="this.formRegistro.controls?.['password'].touched && this.formRegistro.controls?.['password'].invalid">
-        <ion-text *ngif="errorControl.password.error?.required">
+      <div *ngIf="this.formRegistro.controls?.['password'].touched && this.formRegistro.controls?.['password'].invalid">
+        <ion-text *ngIf="errorControl.password.errors?.required">
           Contraseña es requerida
         </ion-text>
       </div>
 
 
       <ion-input formControlName="email" [(ngModel)]="correo" label="Ingrese su correo" labelPlacement="floating" type="mail"></ion-input>
-      <div *ngif="this.formRegistro.controls?.['email'].touched && this.formRegistro.controls?.['email'].invalid">
-        <ion-text *ngif="errorControl.email.error?.required">
+      <div *ngIf="this.formRegistro.controls?.['email'].touched && this.formRegistro.controls?.['email'].invalid">
+        <ion-text *ngIf="errorControl.email.errors?.required">
           Correo es requerido
         </ion-text>
       </div>
@@ -33,7 +33,7 @@
       <br>
       <a href= "" click= "regresar()" ><h5>¿Ya tienes cuenta? Inicia sesión</h5></a>
 
-      <ion-button expand="block" (click)="ingresar()"><ion-ripple-effect></ion-ripple-effect>Ingresar</ion-button>
+      <ion-button expand="block" (click)="registarFireBase()"><ion-ripple-effect></ion-ripple-effect>Ingresar</ion-button>
 
     </ion-card-content>
   </form>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { AutentificacionService } from 'src/app/services/autentificacion.service';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +13,48 @@ import { ToastController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   //declarar un modelo para obtener los input del login
   login:any={
-   usuario:"",
+   email:"",
    password:"" 
  }
  //defino una variable para indicar el campo vacío
  field:string="";
-   constructor(public router:Router, public toastController:ToastController) { }
+
+  formLogin: FormGroup;
+
+   constructor(public router:Router, 
+               public toastController:ToastController,
+               public formBuilder: FormBuilder,
+              public autentificacion : AutentificacionService) { }
  
    ngOnInit() {
+    this.formLogin = this.formBuilder.group({
+      email : ['', [Validators.required,
+                    Validators.email
+      ]],
+      password : ['', [Validators.required,
+                       Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")
+      ]],
+    }) 
+
    }
+
+
+   get errorControl(){ 
+    return this.formLogin?.controls;
+  }
+
+  async loginUsuario() {
+    if(this.formLogin?.valid){
+      //const user = await this.autentificacion.registrarUsuario(email,password)
+    }
+    }
+
+
+
+
+
+
+
 
   registro(){
     this.router.navigate(['/register']);

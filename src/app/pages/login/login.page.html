@@ -4,20 +4,35 @@
     <ion-card-title>Bienvenido</ion-card-title>
     <ion-card-subtitle>Inicia sesión en tu cuenta</ion-card-subtitle>
   </ion-card-header>
+  <form [formGroup]="formLogin">
+    <ion-card-content>
+      <ion-input formControlName="email" label="Email" labelPlacement="floating" [(ngModel)]="login.email"></ion-input>
 
-  <ion-card-content>
-    <ion-input label="Usuario" labelPlacement="floating" [(ngModel)]="login.usuario"></ion-input>
+      <div *ngIf="this.formLogin.controls?.['email'].touched && this.formLogin.controls?.['email'].invalid">
+        <ion-text *ngIf="errorControl.email.errors?.required">
+          Correo es requerido
+        </ion-text>
+      </div>
 
-    <ion-input label="Contraseña" labelPlacement="floating" type="password" [(ngModel)]="login.password"></ion-input>
-    <br>
-    <ion-item style="color: #1b475d;" [routerLink]="['/recuperarcontrasena']">
-      <ion-label>¿Has olvidado tu Contraseña?</ion-label>
-    </ion-item>
-    <br>
+      <ion-input formControlName="password" label="Contraseña" labelPlacement="floating" type="password" [(ngModel)]="login.password"></ion-input>
 
-    <ion-button expand="block" (click)="ingresar()" id="open-loading"><ion-ripple-effect></ion-ripple-effect>Ingresar</ion-button>
-    <ion-loading class="custom-loading" trigger="open-loading" message="Loading..." [duration]="1200"></ion-loading>
-    <br>
-    <ion-button expand="block" (click)="registro()"><ion-ripple-effect></ion-ripple-effect>Registrarse</ion-button>
-  </ion-card-content>
+      <div *ngIf="this.formLogin.controls?.['password'].touched && this.formLogin.controls?.['password'].invalid">
+        <ion-text *ngIf="errorControl.password.errors?.required">
+          Contraseña es requerida
+        </ion-text>
+      </div>
+
+      <br>
+      <ion-item style="color: #1b475d;" [routerLink]="['/recuperarcontrasena']">
+        <ion-label>¿Has olvidado tu Contraseña?</ion-label>
+      </ion-item>
+      <br>
+
+      <ion-button expand="block" (click)="ingresar()" id="open-loading"><ion-ripple-effect></ion-ripple-effect>Ingresar</ion-button>
+      <ion-loading class="custom-loading" trigger="open-loading" message="Loading..." [duration]="1200"></ion-loading>
+      <br>
+      <ion-button expand="block" (click)="registro()"><ion-ripple-effect></ion-ripple-effect>Registrarse</ion-button>
+    </ion-card-content>
+
+  </form>
 </ion-card>
