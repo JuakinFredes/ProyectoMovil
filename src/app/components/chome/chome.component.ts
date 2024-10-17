@@ -4,6 +4,7 @@ import { ElementRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Animation, AnimationController, IonButton } from '@ionic/angular';
+import { AutentificacionService } from 'src/app/services/autentificacion.service';
 
 @Component({
   selector: 'app-chome',
@@ -17,7 +18,9 @@ export class ChomeComponent  implements OnInit {
 
   private animation! : Animation;
 
-  constructor(private animationCtrl:AnimationController,public router:Router){ }
+  constructor(private animationCtrl:AnimationController,
+              public router:Router,
+              public autentificacion : AutentificacionService){ }
 
   ngOnInit() {}
   ngAfterViewInit(){
@@ -34,7 +37,9 @@ export class ChomeComponent  implements OnInit {
 
     this.animation.play();
   }
-  regresar(){
+  async logoutUsuario(){
+    this.autentificacion.logoutUsuario();
     this.router.navigate(['/login']);
   }
+  
 }
