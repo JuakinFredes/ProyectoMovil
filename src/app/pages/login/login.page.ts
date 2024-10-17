@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { AutentificacionService } from 'src/app/services/autentificacion.service';
 
 @Component({
@@ -24,7 +24,8 @@ export class LoginPage implements OnInit {
    constructor(public router:Router, 
                public toastController:ToastController,
                public formBuilder: FormBuilder,
-              public autentificacion : AutentificacionService) { }
+               public autentificacion : AutentificacionService,
+               public loadingControl : LoadingController) { }
  
    ngOnInit() {
     this.formLogin = this.formBuilder.group({
@@ -44,8 +45,13 @@ export class LoginPage implements OnInit {
   }
 
   async loginUsuario() {
+    const loading = await this.loadingControl.create();
     if(this.formLogin?.valid){
-      //const user = await this.autentificacion.registrarUsuario(email,password)
+      const user = await this.autentificacion.loginUsuario(this.formLogin.value.email,this.formLogin.value.password)
+      if(user){
+        loading.dismiss()
+        this.router.navigate(['/home'])
+      }
     }
     }
 
