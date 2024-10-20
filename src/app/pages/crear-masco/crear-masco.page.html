@@ -17,24 +17,26 @@
 
     <ion-card-content>  
       <ion-item>
-        <ion-input label="Nombre" placeholder="Nombre" (ngModel)="nombre"></ion-input>
+        <ion-input label="Nombre" placeholder="Nombre" [(ngModel)]="nombre"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input label="Apellido" placeholder="Apellido" (ngModel)="apellido"></ion-input>
+        <ion-input label="Apellido" placeholder="Apellido" [(ngModel)]="apellido"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input label="Especie" placeholder="Especie" (ngModel)="especie"></ion-input>
+        <ion-input label="Especie" placeholder="Especie" [(ngModel)]="especie"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input label="Raza" placeholder="Raza" (ngModel)="raza"></ion-input>
+        <ion-input label="Raza" placeholder="Raza" [(ngModel)]="raza"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input label="Fecha de Nacimiento" placeholder="" (ngModel)="createdAt"></ion-input>
+        <ion-input label="Fecha de Nacimiento" placeholder="" [(ngModel)]="createdAt"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input label="Nombre Dueño" placeholder="Nombre Dueño" (ngModel)="dueno"></ion-input>
+        <ion-input label="Nombre Dueño" placeholder="Nombre Dueño" [(ngModel)]="dueno"></ion-input>
       </ion-item>
     </ion-card-content>
 
+      <ion-button class="center-button" (click)="mascotaAgregada()">Agregar</ion-button>
 
+    
 </ion-card>

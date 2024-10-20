@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { AutentificacionService } from './autentificacion.service';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 
-@Injectable({
-  providedIn: 'root'
-})
+
 
 export class Mascota{
   id?:string;
@@ -25,7 +23,14 @@ export class Mascota{
     this.dueno = dueno;
     this.createdAt = createdAt;
   }
+
 }
+
+
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class MascotasService {
   
@@ -44,4 +49,4 @@ export class MascotasService {
   }
 
 }
- 
+
