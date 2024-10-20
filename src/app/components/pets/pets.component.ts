@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AutentificacionService } from 'src/app/services/autentificacion.service';
 
 @Component({
   selector: 'app-pets',
@@ -8,9 +9,25 @@ import { Router } from '@angular/router';
 })
 export class PetsComponent  implements OnInit {
 
-  constructor(private router:Router) { }
+  userId:any;
+  nombre:string;
+  apellido:string;
+  especie:string;
+  raza:string;
+  dueno:string;
+  createdAt:any;
 
-  ngOnInit() {}
+  constructor(private router:Router,
+    private autentificacion : AutentificacionService
+  ) { }
+
+  ngOnInit() {
+    this.autentificacion.obtenerUsuario().then(user => (
+      this.userId =user.uid
+    ))
+  }
+
+
   perfilMascota(){
     this.router.navigate(['/petperil']);
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AutentificacionService } from './autentificacion.service';
-import { collection } from '@angular/fire/firestore';
+import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,7 @@ export class MascotasService {
   
   userId : any
 
-  constructor(private autentificacion : AutentificacionService) { 
+  constructor(private autentificacion : AutentificacionService,private firestore: Firestore) { 
     this.autentificacion.obtenerUsuario().then(user =>{
       this.userId = user.uid
     })
@@ -39,7 +39,8 @@ export class MascotasService {
 
   crearMascota(mascota:Mascota){
     mascota.userId = this.userId
-    const mascotaRef = collection
+    const mascotaRef = collection(this.firestore,"mascotas")
+    return addDoc(mascotaRef,mascota)
   }
 
 }
