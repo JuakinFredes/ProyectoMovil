@@ -12,8 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 
 import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
-import { provideFirebaseApp } from '@angular/fire/app';
-import { initializeApp } from 'firebase/app';
+import { provideFirebaseApp,initializeApp  } from '@angular/fire/app';
 import { getFirestore,provideFirestore } from '@angular/fire/firestore';
 
 
@@ -22,7 +21,7 @@ import { getFirestore,provideFirestore } from '@angular/fire/firestore';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
             AngularFireModule,AngularFireAuthModule,
             AngularFireModule.initializeApp(environment.firebaseConfig),
-            provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+            provideFirebaseApp(() =>  initializeApp(environment.firebaseConfig)),
             provideFirestore(() => getFirestore())
           ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },SQLite],
