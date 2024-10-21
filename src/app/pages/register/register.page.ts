@@ -12,7 +12,7 @@ import { DbserviceService } from 'src/app/services/dbservice.service';
 })
 export class RegisterPage implements OnInit {
 
-  nombre : string = "";
+
   contrasena : string = "";
   correo : string = "";
 
@@ -54,6 +54,7 @@ export class RegisterPage implements OnInit {
       const user = await this.autentificacion.registrarUsuario(this.formRegistro.value.email,this.formRegistro.value.password)
       if(user){
         loading.dismiss()
+        this.registrar()
         this.router.navigate(['/home'])
       }
     }
@@ -65,8 +66,8 @@ export class RegisterPage implements OnInit {
 
 
   async registrar(){
-    await this.dbservice.addUsuario(this.nombre, this.contrasena, this.correo); 
-    console.log('Registrando usuario:', this.nombre, this.contrasena, this.correo);
+    await this.dbservice.addUsuario( this.contrasena, this.correo); 
+    console.log('Registrando usuario:', this.contrasena, this.correo);
   }
   
   ingresar(){

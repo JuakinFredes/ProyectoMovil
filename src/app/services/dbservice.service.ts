@@ -3,6 +3,7 @@ import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
 import { Platform, ToastController } from '@ionic/angular'; 
 import { BehaviorSubject, Observable } from 'rxjs'; 
 import { Usuario } from '../class/usuario';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 
@@ -13,7 +14,7 @@ import { Usuario } from '../class/usuario';
 export class DbserviceService {
 
   public database!: SQLiteObject;
-  tblUsuario:string = "CREATE TABLE IF NOT EXISTS usuario(id INTEGER PRIMARY KEY autoincrement, nombre VARCHAR(255) NOT NULL,contrasena VARCHAR(255) NOT NULL,correo VARCHAR(255) NOT NULL"
+  tblUsuario: string = "CREATE TABLE IF NOT EXISTS usuario(id INTEGER PRIMARY KEY AUTOINCREMENT, contrasena VARCHAR(255) NOT NULL, correo VARCHAR(255) NOT NULL)";
 
   listaUsuario = new BehaviorSubject<Usuario[]>([]);  
   private isDbReady: 
@@ -22,7 +23,8 @@ export class DbserviceService {
 
     constructor(private sqlite: SQLite, 
       private platform: Platform, 
-      public toastController: ToastController
+      public toastController: ToastController,
+      private afAuth: AngularFireAuth
     ) { 
       this.crearBD(); 
       
@@ -60,8 +62,6 @@ export class DbserviceService {
           if (res.rows.length > 0) { 
             for (let i = 0; i < res.rows.length; i++) { 
               items.push({ 
-                id: res.rows.item(i).id, 
-                nombre: res.rows.item(i).nombre, 
                 contrasena: res.rows.item(i).contrasena, 
                 correo: res.rows.item(i).correo
               }); 
@@ -71,17 +71,12 @@ export class DbserviceService {
 
         }); 
     }
-    async addUsuario(nombre: any, contrasena: any, correo: any) { 
-      let data = [nombre, contrasena , correo]; 
-      await this.database.executeSql('INSERT INTO usuario(nombre,contrasena,correo) VALUES(?,?,?)', data); 
+    async addUsuario(contrasena: any, correo: any) { 
+      let data = [contrasena , correo]; 
+      await this.database.executeSql('INSERT INTO usuario(contrasena,correo) VALUES(?,?)', data); 
       this.cargarUsuario(); 
     } 
 
-    async updateUsuario(nombre: any, apellido: any, contrasena: any, correo: any) { 
-      let data = [nombre, apellido, contrasena , correo]; 
-      await this.database.executeSql('UPDATE usuario SET nombre=?, contrasena=? ,correo=? WHERE id=?', data); 
-      this.cargarUsuario(); 
-    } 
 
     async deleteUsuario(id: any) { 
       await this.database.executeSql('DELETE FROM usuario WHERE id=?', [id]); 
@@ -92,9 +87,13 @@ export class DbserviceService {
       return this.isDbReady.asObservable(); 
     } 
    
-    fetchUsuario(): Observable<Usuario[]> { 
-      return this.listaUsuario.asObservable(); 
-    } 
+    async login(email: string, contrasena: string) {
+      return this.afAuth.signInWithEmailAndPassword(email, contrasena);
+    }
+  
+    async logout() {
+      return this.afAuth.signOut();
+    }
    
     async presentToast(mensaje: string) { 
       const toast = await this.toastController.create({ 

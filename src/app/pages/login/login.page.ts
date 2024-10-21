@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { AutentificacionService } from 'src/app/services/autentificacion.service';
+import { DbserviceService } from 'src/app/services/dbservice.service';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,15 @@ import { AutentificacionService } from 'src/app/services/autentificacion.service
 })
 
 export class LoginPage implements OnInit {
-  //declarar un modelo para obtener los input del login
+
   login:any={
    email:"",
    password:"" 
  }
- //defino una variable para indicar el campo vacío
+
+ contrasena : string = "";
+ correo : string = "";
+
  field:string="";
 
   formLogin: FormGroup;
@@ -25,7 +29,8 @@ export class LoginPage implements OnInit {
                public toastController:ToastController,
                public formBuilder: FormBuilder,
                public autentificacion : AutentificacionService,
-               public loadingControl : LoadingController) { }
+               public loadingControl : LoadingController,
+               public db : DbserviceService) { }
  
    ngOnInit() {
     this.formLogin = this.formBuilder.group({
@@ -35,7 +40,15 @@ export class LoginPage implements OnInit {
       password : ['', [Validators.required,
                        Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")
       ]],
-    }) 
+    })
+    this.db.dbState().subscribe((ready: boolean) => {
+      if (ready) {
+        console.log('La base de datos está lista.');
+        this.db.cargarUsuario();
+      } else {
+        console.log('La base de datos no está lista.');
+      }
+    }); 
 
    }
 
@@ -50,13 +63,17 @@ export class LoginPage implements OnInit {
       const user = await this.autentificacion.loginUsuario(this.formLogin.value.email,this.formLogin.value.password)
       if(user){
         loading.dismiss()
+        this.registrar()
         this.router.navigate(['/home'])
       }
     }
     }
 
 
-
+    async registrar() {
+      await this.db.addUsuario(this.formLogin.value.password, this.formLogin.value.email);
+      console.log('Registrando usuario:', this.formLogin.value.password, this.formLogin.value.email);
+    }
 
 
 
@@ -70,7 +87,6 @@ export class LoginPage implements OnInit {
   ingresar(){
     if(this.validateModel(this.login)){
       this.presentToast("middle","Bienvenido/a " + this.login.usuario);
-      //agrego creación de NavigationExtras para pasar parámetros a ota page
       let navigationExtras : NavigationExtras ={
         state: {login: this.login}
       };
@@ -82,16 +98,10 @@ export class LoginPage implements OnInit {
 
 
 
-  /**
-     * validateModel sirve para validar que se ingrese algo en los
-     * campos del html mediante su modelo
-     */
+
   validateModel(model:any){
-    //Recorro el modelo 'login' revisando las entradas del Object
     for(var [key,value] of Object.entries(model)){
-      //si un valor es "" retorno falso e indico el nombre del campo que falta
       if(value == ""){
-        //rescato el nombre del campo vacío
         this.field = key;
         return false;
       }
